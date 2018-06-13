@@ -44,7 +44,6 @@
           <div class="ranking">获得</div>
           <div class="point">
             <span>{{item.amount}}</span>
-            <span>{{item.candy_name}}</span>
           </div>
           <div class="power">{{item.time}}</div>
         </div>
@@ -101,8 +100,7 @@
         }
         getBubbleData({
           'token': userToken
-        })
-        .then((res)=> {
+        }).then((res)=> {
           if(res.code === 200) {
             this.userPower = res.data.power
             this._setBubblePosition(res.data.candy_list)
@@ -115,8 +113,7 @@
           } else {
             this._setBubblePosition(defaultArr)
           }
-        })
-        .catch((error)=> {
+        }).catch((error)=> {
           this._setBubblePosition(defaultArr)
         })
       },
@@ -124,7 +121,7 @@
         let limit = 9, index = 0
         let num = bubbleArr.length > limit ? limit : bubbleArr.length
         let x1 = 0, y1 = 40, w = 70
-        let x2 = document.documentElement.clientWidth, y2 = document.documentElement.clientHeight * 0.45
+        let x2 = document.documentElement.clientWidth - 80, y2 = document.documentElement.clientHeight * 0.45
         let xNum = Math.floor((x2 - x1) / w), yNum = Math.floor((y2 - y1) / w)
         let ww = (x2 - x1) / xNum, hh = (y2 - y1) / yNum
         let posArr = [], x = 0, y = 0, randX = 34, randY = 20
@@ -201,17 +198,17 @@
             'candy_key': this.bubbleArr[index].key
           }).then((res)=> {
             if(res.code === 200) {
-              this.gainArr.push(this.bubbleArr[index])
               this._hideBubble(index)
             }
           }).catch(()=> {})
         } else{
           this.bubbleArr[index] = Object.assign({}, this.bubbleArr[index], {class: 'gone'})
-          this.gainArr.push(this.bubbleArr[index])
           this._hideBubble(index)
         }
       },
       _hideBubble (index) {
+        this.gainArr.unshift(this.bubbleArr[index])
+        this.gainArr.pop()
         setTimeout(()=> {
           this.bubbleArr.splice(index, 1)
         }, 300)

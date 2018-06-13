@@ -21,25 +21,30 @@
     </div>
     <TaskOneExplain v-if="showExplainFlag" @hideExplain="hideExplain"/>
     <GainSuccess v-if="showSuccessFlag" @hideSuccess="hideSuccess"/>
+    <Modal v-show="modal" :modal="modal" @sure="sureModal"/>
   </div>
 </template>
 
 <script>
   import TaskOneExplain from './TaskOneExplain'
   import GainSuccess from './GainSuccess.vue'
+  import Modal from './Modal.vue'
   import {getTask} from '@/api/task'
+  import {signIn} from '@/api/sign'
 
   export default {
     data () {
       return {
         power_arr: {},
+        modal: '',
         showExplainFlag: false,
         showSuccessFlag: false
       }
     },
     components: {
       TaskOneExplain,
-      GainSuccess
+      GainSuccess,
+      Modal
     },
     created () {
       this._getTask()
@@ -50,6 +55,25 @@
           'token': this.$store.state.userToken
         }).then((res)=> {
           this.power_arr = res.data
+        }).catch(()=> {})
+      },
+      _signIn () {
+        signIn({
+          'token': this.$store.state.userToken
+        }).then((res)=> {
+          if(res.code === 200) {
+            this._showModal({
+              title: '任务完成',
+              desc: '您获得了2个原力',
+              showCancel: false
+            })
+          } else{
+            this._showModal({
+              title: '任务失败',
+              desc: res.error,
+              showCancel: false
+            })
+          }
         }).catch(()=> {})
       },
       showDig () {
@@ -77,11 +101,7 @@
           return
         }
         if(key === 'user_signed') {
-          this._showModal({
-            title: '任务提示',
-            desc: '每日签到即可获得',
-            showCancel: false
-          })
+          this._signIn()
           return
         }
         this.showExplainFlag = true
@@ -91,129 +111,17 @@
       },
       hideSuccess () {
         this.showSuccessFlag = false
+      },
+      sureModal () {
+        this.modal = ''
+      },
+      _showModal (modal) {
+        this.modal = modal
       }
     }
   }
 </script>
 
 <style lang="scss">
-.task {
-  color: #000;
-  background: #f8f8f8;
-  .power_header {
-    position: relative;
-    margin-bottom: 0.20rem;
-    .close {
-      font-size: 0.60rem;
-      top: 0;
-      right: 0;
-      padding: 0.10rem;
-    }
-    div {
-      color: #fff;
-      position: absolute;
-      text-align: center;
-    }
-    img {
-      width: 100%;
-      height: 2.40rem;
-    }
-    .power_header_title {
-      width: 100%;
-      left: 0;
-      top: 0.70rem;
-      font-size: 0.40rem;
-    }
-    .power_header_desc {
-      top: 1.40rem;
-      font-size: 0.24rem;
-      padding: 0.06rem 0;
-      width: 60%;
-      left: 20%;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 0.36rem;
-    }
-  }
-  .power_title {
-    font-size: 0.30rem;
-    padding: 0.30rem;
-    background: #fff;
-  }
-  .box_ctn {
-    text-align: center;
-    overflow: hidden;
-    background: #fff;
-    border-top: 1px solid #eee;
-    .box {
-      padding: 0.28rem 0.1rem;
-      width: 33.3%;
-      box-sizing: border-box;
-      border-right: 1px solid #eee;
-      float: left;
-      border-bottom: 1px solid #eee;
-      height: 3rem;
-      .box_icon {
-        height: 0.52rem;
-        width: 0.54rem;
-        margin: 0 auto;
-        background: url(http://wx.wpart.cn/uploads/e/exhzhh1526289964/3/8/d/e/5afa4a6109a84.png) no-repeat;
-        background-size: auto 100%;
-        margin-bottom: 0.20rem;
-        &.invite {
-          background-position: 0 center;
-        }
-        &.subscribe {
-          background-position: 49% center;
-        }
-        &.user_signed {
-          background-position: 100% center;
-        }
-      }
-      .box_title {
-        font-size: 0.26rem;
-        font-weight: 400;
-        margin-bottom: 0.20rem;
-      }
-      .box_desc {
-        font-size: 0.22rem;
-        color: #6c6c6c;
-        margin-bottom: 0.20rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .box_done {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        div {
-          &.done_icon {
-            background: url(http://wx.wpart.cn/uploads/e/exhzhh1526289964/3/0/5/6/5afa8785d9731.png_p2js) no-repeat;
-            background-size: auto 100%;
-            border-radius: 50%;
-            width: 0.3rem;
-             height: 0.3rem;
-            margin-right: 0.05rem;
-          }
-          &:last-child {
-            font-size: 0.3rem;
-            transform: scale(0.9);
-          }
-        }
-      }
-      .btn {
-        color: #fff;
-        padding: 0.06rem 0;
-        font-size: 0.22rem;
-        font-weight: 400;
-        width: 1.70rem;
-        margin: 0 auto;
-        border-radius: 0.4rem;
-      }
-      &:nth-child(3n) {
-        border-right: none;
-      }
-    }
-  }
-}
+  @import '../../static/taskList.scss'
 </style>

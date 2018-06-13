@@ -20,7 +20,18 @@ export function login(param) {
   return jsonp(data)
 }
 
+export function signIn(param) {
+  const time = Date.parse(new Date())
+  const data = {
+    "m": "blockchain.task.signed",
+    "t": time,
+    "p": param
+  }
+  return jsonp(data)
+}
+
 export default {
   sendVerifyCode,
-  login
+  login,
+  signIn
 }

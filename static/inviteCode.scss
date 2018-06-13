@@ -1,0 +1,62 @@
+.inviteCode {
+  background-image: url(http://wx.wpart.cn/uploads/k/kvqese1523955909/9/c/3/b/5ad82bf26dafc.png);
+  color: #7d67df;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  .close {
+    font-size: 0.60rem;
+    color: #fff;
+    position: absolute;
+    top: 0.20rem;
+    right: 0.20rem;
+    padding: 0.20rem;
+  }
+  .icon_ctn {
+    text-align: center;
+    font-size: 0.28rem;
+    padding-top: 1.3rem;
+    margin-bottom: 0.70rem;
+    color: #fff;
+  }
+  .invite_ctn {
+    width: 6.30rem;
+    margin: 0.40rem auto;
+    background: #fff;
+    padding: 0.70rem 0.40rem;
+    box-sizing: border-box;
+    text-align: center;
+    .invite_code {
+      font-size: 0.86rem;
+      font-weight: bold;
+      line-height: 1.40rem;
+      height: 1.40rem;
+      min-height: 1.40rem;
+      text-align: center;
+      color: #7d67df;
+    }
+    .btn {
+      width: 6.30rem;
+      margin: 0.40rem auto;
+      color: #fff;
+      &.copy {
+        min-width: 3em;
+        width: auto;
+        padding: 0.14rem 0.40rem;
+        color: #fff;
+        margin: 0 auto 0.40rem;
+        display: inline-block;
+      }
+    }
+    .invite_rule {
+      text-align: left;
+      color: #666;
+      padding-top: 0.40rem;
+      span {
+        color: #7d67df;
+      }
+    }
+  }
+}

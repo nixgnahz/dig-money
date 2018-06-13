@@ -7,13 +7,14 @@
     position: relative;
     color: #3ec5fd;
     .bubble_ctn{
-      width:1.50rem;
+      width:1.20rem;
       height:1.12rem;
       position:absolute;
       font-size:0.24rem;
       text-align:center;
       color:#fff;
       &.bubble_reminder {
+        width:1.50rem;
         top: 3.30rem;
         left: 3.20rem;
         -webkit-animation: move 2s infinite;
@@ -91,7 +92,7 @@
       overflow:hidden;
       .menu_btn{
         display: inline-flex;
-        font-size: 0.17rem;
+        font-size: 0.25rem;
         color: #fff;
         text-align: center;
         flex-direction: column;
@@ -110,7 +111,6 @@
         div {
           &:last-child {
             margin-top: 0.1rem;
-            transform: scale(0.9);
           }
         }
       }
@@ -132,7 +132,6 @@
     padding-bottom: 0.30rem;
     .rank_title {
       font-size: 0.34rem;
-      padding: 0.20rem 0 0.20rem 0.34rem;
       text-align: center;
       font-weight: 500;
       color: #7d67df;
@@ -168,16 +167,10 @@
         > span{
           display: inline-block;
           vertical-align: bottom;
-          font-size: 0.24rem;
-          &:first-child{
-            color: #7d67df;
-            font-size: 0.32rem;
-            font-weight: 500;
-            margin-right: 0.01rem;
-          }
-          &:last-child {
-            transform: scale(0.85);
-          }
+          color: #7d67df;
+          font-size: 0.32rem;
+          font-weight: 500;
+          margin-right: 0.01rem;
         }
       }
       .power {

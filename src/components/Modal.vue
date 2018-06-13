@@ -52,7 +52,7 @@
       .desc {
         color: #666;
         font-size: 0.33rem;
-        margin: 0.5rem 0px 0.5rem;
+        margin: 0.3rem 0px 0.4rem;
       }
       .btns {
         display: flex;
@@ -64,7 +64,7 @@
         border-top: 1px solid #ebebeb;
         p {
           flex: 1;
-          padding: 0.3rem 0px;
+          padding: 0.25rem 0px;
           font-size: 0.35rem;
           &:last-child {
             border-left: 1px solid #ebebeb;

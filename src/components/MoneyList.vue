@@ -1,7 +1,7 @@
 <template>
   <div class="dataList wrap">
     <div class="point_list">
-      <div class="point_li selected" v-for="(item, index) in assetArr">
+      <div :class="['point_li', item.selected ? 'selected' : '']" v-for="(item, index) in assetArr" @click="showDesc(index)">
         <div class="point_icon bg"></div>
         <div>{{item.name}}</div>
         <div class="point">{{item.amount}}</div>
@@ -16,6 +16,7 @@
 
 <script>
   import getAsset from '@/api/asset'
+  import Vue from 'vue'
 
   export default {
     data () {
@@ -44,6 +45,9 @@
             now: 'DigMoneyFlag'
           }
         })
+      },
+      showDesc (index) {
+        this.$set(this.assetArr[index], 'selected', !this.assetArr[index].selected)
       }
     }
   }

@@ -1,0 +1,62 @@
+.explain {
+  line-height: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: #fff;
+  .header {
+    background: linear-gradient(to right, #6a57f7, #b444ef);
+    padding: 0.60rem 0.30rem 0;
+    font-size: 0.26rem;
+    font-weight: 300;
+    .subscribe_title {
+      font-size: 0.34rem;
+      text-align: center;
+      div {
+        margin-bottom: 0.40rem;
+      }
+    }
+    .subscribe_content {
+      div {
+        margin-bottom: 0.35rem;
+      }
+    }
+    .subscribe_footer {
+      padding: 0.26rem 0;
+      border-top: 2px dashed;
+      opacity: 0.7;
+    }
+  }
+  .form_ctn {
+    color: #000;
+    width: 6.56rem;
+    text-align: center;
+    margin: 0.66rem auto 0px;
+    .subscribe_code {
+      margin-top: 0.70rem;
+      width: 100%;
+      border-bottom: 1px solid #ccc;
+      border-radius: 0;
+      margin-bottom: 1.00rem;
+      color: #333;
+    }
+    .btn {
+      color: #fff;
+      &.disabled {
+        background: #ccc;
+      }
+    }
+  }
+  .close {
+    font-size: 0.60rem;
+    color: #fff;
+    position: absolute;
+    top: 0.20rem;
+    right: 0.20rem;
+    padding: 0.20rem;
+    color: #fff;
+  }
+}

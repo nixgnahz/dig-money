@@ -1,0 +1,44 @@
+.loadMore {
+  text-decoration: underline;
+  text-align: center;
+  background-color: #fff;
+  padding-top: 0.25rem;
+}
+.empty {
+  height: 1.4rem;
+  background-color: #fff;
+}
+.record_li {
+  padding: 0.20rem;
+  border: 1px solid #ebebeb;
+  display: flex;
+  align-items: center;
+  > div {
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    color: #000;
+    font-size: 0.32rem;
+  }
+  .right {
+    text-align: right;
+    > div {
+      display: inline-block;
+    }
+  }
+  .time {
+    font-size: 0.26rem;
+    color: #999;
+    margin-top: 0.10rem;
+  }
+  .point {
+    margin-right: 0.06rem;
+    color: #7d67df;
+    font-weight: 500;
+    font-size: 0.34rem;
+  }
+  .candy_name {
+    font-size: 0.26rem;
+    color: #666;
+  }
+}
