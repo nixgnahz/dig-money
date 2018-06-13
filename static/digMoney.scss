@@ -1,0 +1,270 @@
+.digMoney {
+  color: #000;
+  line-height: 1;
+  .game_ctn {
+    width: 100%;
+    height: 8.00rem;
+    position: relative;
+    color: #3ec5fd;
+    .bubble_ctn{
+      width:1.50rem;
+      height:1.12rem;
+      position:absolute;
+      font-size:0.24rem;
+      text-align:center;
+      color:#fff;
+      &.bubble_reminder {
+        top: 3.30rem;
+        left: 3.20rem;
+        -webkit-animation: move 2s infinite;
+      }
+      &.gone{
+        -webkit-animation: gone 0.25s linear;
+        -webkit-animation-fill-mode: forwards;
+      }
+      .bubble{
+        width:0.82rem;
+        height:0.82rem;
+        margin:0 auto 0.10rem;
+      }
+      .ani_ctn{
+        position:relative;
+        height:100%;
+        width:100%;
+        top:0;
+        left:0;
+        .ani{
+          position:absolute;
+          height:100%;
+          width:100%;
+          top:0;
+          left:0;
+          -webkit-animation:move2 2s infinite;
+          div{
+            text-shadow:0 0 5px rgba(0,0,0,0.8);
+          }
+        }
+      }
+    }
+    .bubble_reminder{
+      top:3.30rem;
+      left:3.20rem;
+      -webkit-animation:move 2s infinite;
+    }
+    .game_bg {
+      width: 100%;
+      height: 100%;
+    }
+    .info_ctn {
+      position: absolute;
+      width: 50%;
+      top: 0;
+      left: 0;
+      font-size: 0.24rem;
+      padding: 0.20rem 0;
+      .info_li {
+        padding: 0.16rem 0 0.16rem 0.36rem;
+        div {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .info_icon {
+          width: 0.34rem;
+          height: 0.34rem;
+          background: url(http://wx.wpart.cn/uploads/S/Spj7wTNMSj8kDeysSrET/1/8/7/9/5aac7b3948741.png_p2js) no-repeat;
+          background-size: 100% auto;
+          margin-right: 0.14rem;
+          &.point {
+            background-position: center -12%;
+          }
+          &.power {
+            background-position: center 100%;
+          }
+        }
+      }
+    }
+    .menu_btn_ctn{
+      position:absolute;
+      bottom:0.40rem;
+      width:100%;
+      left:0;
+      overflow:hidden;
+      .menu_btn{
+        display: inline-flex;
+        font-size: 0.17rem;
+        color: #fff;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        &:first-child{
+          margin-left:0.40rem;
+        }
+        &:nth-child(2){
+          margin-left:0.40rem;
+          opacity: 0.7;
+        }
+        &:last-child{
+          margin-right:0.40rem;
+          float:right;
+        }
+        div {
+          &:last-child {
+            margin-top: 0.1rem;
+            transform: scale(0.9);
+          }
+        }
+      }
+      .menu_icon{
+        width:0.86rem;
+        height:0.86rem;
+        background:url(http://wx.wpart.cn/uploads/S/Spj7wTNMSj8kDeysSrET/2/0/3/f/5aaf5c25641f1.png_p2js) no-repeat;
+        background-size:auto 98%;
+      }
+      .my_power{
+        background-position:48% center;
+      }
+      .my_invite{
+        background-position:94% center;
+      }
+    }
+  }
+  .content {
+    padding-bottom: 0.30rem;
+    .rank_title {
+      font-size: 0.34rem;
+      padding: 0.20rem 0 0.20rem 0.34rem;
+      text-align: center;
+      font-weight: 500;
+      color: #7d67df;
+      padding: 0.20rem 0;
+      border-bottom: 3px solid #ebebeb;
+      > div {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .small {
+        font-size: 0.24rem;
+        margin-top: 0.05rem;
+        float: right;
+        margin-right: 0.34rem;
+        line-height: 0.34rem;
+        color: #666;
+      }
+    }
+    .rank_list {
+      .ranking, .point, .power {
+        width: 31%;
+        margin-right: 3.5%;
+      }
+      .ranking{
+        color:#666;
+        font-weight:500;
+      }
+      .point {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > span{
+          display: inline-block;
+          vertical-align: bottom;
+          font-size: 0.24rem;
+          &:first-child{
+            color: #7d67df;
+            font-size: 0.32rem;
+            font-weight: 500;
+            margin-right: 0.01rem;
+          }
+          &:last-child {
+            transform: scale(0.85);
+          }
+        }
+      }
+      .power {
+        margin-right: 0;
+        text-align: right;
+        font-size:0.24rem;
+        color:#888;
+      }
+      .rank_li{
+        margin-left:0.34rem;
+        padding:0.24rem 0.34rem 0.24rem 0;
+        border-bottom:1px solid #ebebeb;
+        display: flex;
+      }
+    }
+    .rank_list_title {
+      background: #f8f8f8;
+      font-size: 0.24rem;
+      border-top: 1px solid #ebebeb;
+      border-bottom: 1px solid #ebebeb;
+      padding: 0.20rem 0.34rem;
+      overflow: hidden;
+      > div {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .empty{
+      color:#999;
+      text-align:center;
+      padding-top:0.40rem;
+    }
+    .btn2{
+      width:2.00rem;
+      margin:0.30rem auto 0;
+      font-size:0.26rem;
+      text-align:center;
+      color:#888;
+      padding:0.16rem 0;
+      border:1px solid;
+    }
+  }
+  .bottom {
+    background: #fff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0.20rem;
+    box-sizing: border-box;
+    .btn {
+      width: 80%;
+      margin: 0 auto;
+      background: #7d67df;
+      color: #fff;
+    }
+  }
+}
+
+@keyframes move{
+  0%{
+    top:3.30rem;
+  }
+  50%{
+    top:3.20rem;
+  }
+  100%{
+    top:3.30rem;
+  }
+}
+
+@keyframes move2{
+  0%{
+    top:0.10rem;
+  }
+  50%{
+    top:0;
+  }
+  100%{
+    top:0.10rem;
+  }
+}
+
+@keyframes gone{
+  100%{
+    top:-1.50rem;
+  }
+}

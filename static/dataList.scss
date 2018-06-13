@@ -1,0 +1,57 @@
+.dataList {
+  background:#efeff4;
+  color:#999;
+  .point_list{
+    color:#000;
+    background:#fff;
+    border-top:1px solid #ebebeb;
+    border-bottom:1px solid #ebebeb;
+    .point_li{
+      border-bottom:1px solid #ebebeb;
+      padding:0.22rem 0;
+      overflow:hidden;
+      margin-left:0.40rem;
+      &:last-child{
+        border-bottom:none;
+      }
+      .desc{
+        display:none;
+      }
+      &.selected .desc{
+        display:block;
+        color:#999;
+        font-size:0.24rem;
+        padding:0.10rem 0.10rem 0 2em;
+      }
+      > div{
+        display:inline-block;
+        line-height:0.40rem;
+        vertical-align:middle;
+      }
+      .point_icon{
+        width:0.40rem;
+        height:0.40rem;
+        margin-right:0.18rem;
+        background-image:url(http://wx.wpart.cn/uploads/b/bjbyvz1516775877/5/5/d/d/5aaf6818efb6e.png_p2js);
+      }
+      .point{
+        float:right;
+        margin-right:0.40rem;
+        color:#d00000;
+      }
+    }
+  }
+  .bottom{
+    background:#fff;
+    width:100%;
+    position:fixed;
+    bottom:0;
+    left:0;
+    padding:0.20rem;
+    box-sizing:border-box;
+    .btn{
+      background:#7d67df;
+      color:#fff;
+    }
+  }
+}
