@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import Toast from './Toast.vue'
+  import Toast from './baseComponent/Toast.vue'
 
   import Clipboard from 'clipboard'
   import getInviteCode from '@/api/invite'

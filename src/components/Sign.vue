@@ -29,8 +29,8 @@
 
 <script>
   import Identification from './Identification.vue'
-  import Toast from './Toast.vue'
-  import Modal from './Modal.vue'
+  import Toast from './baseComponent/Toast.vue'
+  import Modal from './baseComponent/Modal.vue'
 
   import {sendVerifyCode, login} from '@/api/sign'
   import {setCookie} from '../../static/common'

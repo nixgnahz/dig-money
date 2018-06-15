@@ -60,7 +60,7 @@
 </template>
 
 <script>
-  import Modal from './Modal.vue'
+  import Modal from './baseComponent/Modal.vue'
 
   import getBubbleData from '@/api/bubble'
   import saveBubble from '@/api/save'

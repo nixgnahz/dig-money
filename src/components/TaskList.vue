@@ -28,7 +28,7 @@
 <script>
   import TaskOneExplain from './TaskOneExplain'
   import GainSuccess from './GainSuccess.vue'
-  import Modal from './Modal.vue'
+  import Modal from './baseComponent/Modal.vue'
   import {getTask} from '@/api/task'
   import {signIn} from '@/api/sign'
 

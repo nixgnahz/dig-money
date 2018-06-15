@@ -27,8 +27,8 @@
 
 <script>
   import {getTaskOneExplain, checkCode} from '@/api/task'
-  import Toast from './Toast.vue'
-  import Modal from './Modal.vue'
+  import Toast from './baseComponent/Toast.vue'
+  import Modal from './baseComponent/Modal.vue'
 
   export default {
     data () {
