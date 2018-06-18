@@ -95,13 +95,13 @@
           this._setBubblePosition(defaultArr)
           return
         }
-        if(userToken != this.$store.state.userToken) {
-          this.$store.commit('setUserToken', userToken)
-        }
         getBubbleData({
           'token': userToken
         }).then((res)=> {
           if(res.code === 200) {
+            if(userToken != this.$store.state.userToken) {
+              this.$store.commit('setUserToken', userToken)
+            }
             this.userPower = res.data.power
             this._setBubblePosition(res.data.candy_list)
             let history = res.data.history
