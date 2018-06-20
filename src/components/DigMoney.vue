@@ -1,5 +1,6 @@
 <template>
   <div class="digMoney wrap">
+    <audio ref="audio"></audio>
     <div class="game_ctn">
       <div class="bubble_ctn bubble_reminder" v-if="!bubbleArr.length && showBubble">
         <img class="bubble" src="http://wx.wpart.cn/uploads/k/kvqese1523955909/0/8/f/4/5ad816e799534.png"/>
@@ -66,6 +67,8 @@
   import saveBubble from '@/api/save'
   import {getCookie, defaultArr} from '../../static/common'
 
+  const music = 'http://wx.wpart.cn/uploads/S/Spj7wTNMSj8kDeysSrET/3/b/f/1/5ab4a5d1ebbe8.mp3'
+
   export default {
     data () {
       return {
@@ -118,13 +121,13 @@
         })
       },
       _setBubblePosition (bubbleArr) {
-        let limit = 9, index = 0
+        let [limit, index] = [9, 0]
+        let [x1, y1, w] = [0, 40, 70]
+        let [posArr, x, y, randX, randY] = [[], 0, 0, 34, 20]
         let num = bubbleArr.length > limit ? limit : bubbleArr.length
-        let x1 = 0, y1 = 40, w = 70
         let x2 = document.documentElement.clientWidth - 80, y2 = document.documentElement.clientHeight * 0.45
         let xNum = Math.floor((x2 - x1) / w), yNum = Math.floor((y2 - y1) / w)
         let ww = (x2 - x1) / xNum, hh = (y2 - y1) / yNum
-        let posArr = [], x = 0, y = 0, randX = 34, randY = 20
         for (var j = 0; j < yNum; j++) {
           for (var i = 0; i < xNum; i++) {
             x = x1 + i * ww + randX * Math.random(0, 1)
@@ -167,8 +170,7 @@
         return returnArray
       },
       _parseTime (str) {
-        let time = str.replace(/-/g, "/")
-        time = new Date(time)
+        let time = new Date(str.replace(/-/g, "/"))
         let now = new Date()
         let gap = parseInt((now - time) * 0.001 / 60, 10)
         let minute_arr = [365 * 24 * 60, 30 * 24 * 60, 7 * 24 * 60, 24 * 60, 60, 0]
@@ -193,6 +195,7 @@
         if(this.userToken) {
           if(!this.bubbleArr[index].key) return
           this.bubbleArr[index] = Object.assign({}, this.bubbleArr[index], {class: 'gone', time: '刚刚'})
+          this._playAudio()
           saveBubble({
             'token': this.userToken,
             'candy_key': this.bubbleArr[index].key
@@ -203,6 +206,7 @@
           }).catch(()=> {})
         } else{
           this.bubbleArr[index] = Object.assign({}, this.bubbleArr[index], {class: 'gone'})
+          this._playAudio()
           this._hideBubble(index)
         }
       },
@@ -212,6 +216,10 @@
         setTimeout(()=> {
           this.bubbleArr.splice(index, 1)
         }, 300)
+      },
+      _playAudio () {
+        this.$refs.audio.src = music
+        this.$refs.audio.play()
       },
       sureModal () {
         this.modal = ''

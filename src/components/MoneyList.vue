@@ -16,7 +16,6 @@
 
 <script>
   import getAsset from '@/api/asset'
-  import Vue from 'vue'
 
   export default {
     data () {

@@ -62,6 +62,7 @@
           'token': this.$store.state.userToken
         }).then((res)=> {
           if(res.code === 200) {
+            this.$set(this.power_arr['user_signed'], 'status', 1)
             this._showModal({
               title: '任务完成',
               desc: '您获得了2个原力',
