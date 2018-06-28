@@ -33,6 +33,7 @@
   import Modal from './baseComponent/Modal.vue'
 
   import {sendVerifyCode, login} from '@/api/sign'
+  import {signIn} from '@/api/sign'
   import {setCookie} from '../../static/common'
 
   export default {
@@ -70,11 +71,7 @@
         .then((res)=> {
           if(res.code === 200 && res.data.token) {
             this._setUserToken(res.data.token)
-            this._showModal({
-              title: '签到任务完成',
-              desc: '您获得了2个原力',
-              showCancel: false
-            })
+            this._signIn(res.data.token)
           } else {
             this._showToast(res.error)
           }
@@ -93,9 +90,22 @@
           }
         })
       },
+      _signIn (userToken) {
+        signIn({
+          'token': userToken
+        }).then((res)=> {
+          if(res.code === 200) {
+            this._showModal({
+              title: '签到任务完成',
+              desc: '您获得了2个原力',
+              showCancel: false
+            })
+          }
+        }).catch(()=> {})
+      },
       _setUserToken (userToken) {
         setCookie('userTokenCookie', userToken, 365)
-        this.$store.dispatch('setUserToken', userToken)
+        this.$store.commit('setUserToken', userToken)
       },
       _checkInput () {
         if(!this.telephone) {

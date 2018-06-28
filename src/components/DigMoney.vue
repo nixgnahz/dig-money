@@ -212,7 +212,9 @@
       },
       _hideBubble (index) {
         this.gainArr.unshift(this.bubbleArr[index])
-        this.gainArr.pop()
+        if(this.userToken) {
+          this.gainArr.pop()
+        }
         setTimeout(()=> {
           this.bubbleArr.splice(index, 1)
         }, 300)
