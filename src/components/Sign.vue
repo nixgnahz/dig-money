@@ -100,6 +100,14 @@
               desc: '您获得了2个原力',
               showCancel: false
             })
+          } else{
+            this.$store.commit({
+              type: 'changePageFlag',
+              value: {
+                last: 'SignFlag',
+                now: 'DigMoneyFlag'
+              }
+            })
           }
         }).catch(()=> {})
       },
