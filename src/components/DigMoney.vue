@@ -3,20 +3,20 @@
     <audio ref="audio"></audio>
     <div class="game_ctn">
       <div class="bubble_ctn bubble_reminder" v-if="!bubbleArr.length && showBubble">
-        <img class="bubble" src="http://wx.wpart.cn/uploads/k/kvqese1523955909/0/8/f/4/5ad816e799534.png"/>
+        <img class="bubble" src="http://wx.11babay.cn/uploads/k/kvqese1523955909/0/8/f/4/5ad816e799534.png"/>
         <div style="color: #7d67df">正在生长中</div>
       </div>
       <div v-if="bubbleArr.length && showBubble">
         <div :class="['bubble_ctn', item.class ? item.class : '']" v-for="(item, index) in bubbleArr" :key="item.key" :style="{top: item.top + 'px', left: item.left + 'px'}" @click="gainBubble(index)">
           <div class="ani_ctn">
             <div class="ani">
-              <img class="bubble" src="http://wx.wpart.cn/uploads/k/kvqese1523955909/0/8/f/4/5ad816e799534.png" />
+              <img class="bubble" src="http://wx.11babay.cn/uploads/k/kvqese1523955909/0/8/f/4/5ad816e799534.png" />
               <div>{{item.amount}}</div>
             </div>
           </div>
         </div>
       </div>
-      <img src="http://wx.wpart.cn/uploads/k/kvqese1523955909/6/a/7/3/5ad82cd949e98.png" class="game_bg"/>
+      <img src="http://wx.11babay.cn/uploads/k/kvqese1523955909/6/a/7/3/5ad82cd949e98.png" class="game_bg"/>
       <div class="info_ctn">
         <div class="info_li">
           <div class="info_icon power"></div>
@@ -67,7 +67,7 @@
   import saveBubble from '@/api/save'
   import {getCookie, defaultArr} from '../../static/common'
 
-  const music = 'http://wx.wpart.cn/uploads/S/Spj7wTNMSj8kDeysSrET/3/b/f/1/5ab4a5d1ebbe8.mp3'
+  const music = 'http://wx.11babay.cn/uploads/S/Spj7wTNMSj8kDeysSrET/3/b/f/1/5ab4a5d1ebbe8.mp3'
 
   export default {
     data () {

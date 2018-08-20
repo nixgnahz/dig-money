@@ -2,7 +2,7 @@
   <div class="task wrap">
     <div class="power_header">
       <div class="close" @click="showDig">×</div>
-      <img src="http://wx.wpart.cn/uploads/e/exhzhh1526289964/5/b/9/1/5afa541997c61.png_p2js"/>
+      <img src="http://wx.11babay.cn/uploads/e/exhzhh1526289964/5/b/9/1/5afa541997c61.png_p2js"/>
       <div class="power_header_title">赶紧收取原力，可以加速挖币</div>
       <div class="power_header_desc">原力越多，获取的币越多</div>
     </div>

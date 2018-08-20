@@ -1,7 +1,7 @@
 <template>
   <div class="inputPage bg wrap">
     <div class="icon_ctn">
-      <img src="http://wx.wpart.cn/uploads/l/lxnkub1478500252/7/8/f/b/5aab7ff4e0423.png_p2js"/>
+      <img src="http://wx.11babay.cn/uploads/l/lxnkub1478500252/7/8/f/b/5aab7ff4e0423.png_p2js"/>
       <div>为保证您的资产安全，需要填写您的身份信息</div>
     </div>
     <div class="form_ctn">

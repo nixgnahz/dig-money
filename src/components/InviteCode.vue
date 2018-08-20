@@ -2,7 +2,7 @@
   <div class="inviteCode bg wrap">
     <div class="close" @click="showDig">×</div>
     <div class="icon_ctn">
-      <img src="http://wx.wpart.cn/uploads/k/kdpyan1521629101/b/8/2/3/5aba18a428cb9.png"/>
+      <img src="http://wx.11babay.cn/uploads/k/kdpyan1521629101/b/8/2/3/5aba18a428cb9.png"/>
       <div style="opacity:0.8">未来之门正在向您开启</div>
     </div>
     <div class="invite_ctn">
