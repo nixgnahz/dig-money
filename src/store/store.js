@@ -12,8 +12,6 @@ export default new Vuex.Store({
       SignFlag: false,
       TaskListFlag: false
     },
-    lastPageFlag: '',
-    nowPageFlag: '',
     userToken: ''
   },
   mutations: {
