@@ -31,7 +31,6 @@
   import Modal from './baseComponent/Modal.vue'
   import {getTask} from '@/api/task'
   import {signIn} from '@/api/sign'
-
   export default {
     data () {
       return {
@@ -124,5 +123,5 @@
 </script>
 
 <style lang="scss">
-  @import '../../static/taskList.scss'
+  @import "../../static/taskList.scss"
 </style>

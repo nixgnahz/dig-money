@@ -29,14 +29,14 @@
   import {getTaskOneExplain, checkCode} from '@/api/task'
   import Toast from './baseComponent/Toast.vue'
   import Modal from './baseComponent/Modal.vue'
-
   export default {
     data () {
       return {
         subscribe: {},
         code: '',
         toast: '',
-        modal: ''
+        modal: '',
+        timer: null
       }
     },
     components: {
@@ -50,6 +50,9 @@
     },
     created () {
       this._getExplain()
+    },
+    beforeDestroy () {
+      clearTimeout(this.timer)
     },
     methods: {
       _getExplain () {
@@ -85,7 +88,7 @@
       },
       _showToast (value) {
         this.toast = value
-        setTimeout(()=> {
+        this.timer = setTimeout(()=> {
           this.toast = ''
         }, 1500)
       },
@@ -97,5 +100,5 @@
 </script>
 
 <style lang="scss">
-  @import '../../static/taskOneExplain.scss'
+  @import "../../static/taskOneExplain.scss"
 </style>

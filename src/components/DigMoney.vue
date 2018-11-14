@@ -62,13 +62,10 @@
 
 <script>
   import Modal from './baseComponent/Modal.vue'
-
   import getBubbleData from '@/api/bubble'
   import saveBubble from '@/api/save'
   import {getCookie, defaultArr} from '../../static/common'
-
   const music = 'http://wx.11babay.cn/uploads/S/Spj7wTNMSj8kDeysSrET/3/b/f/1/5ab4a5d1ebbe8.mp3'
-
   export default {
     data () {
       return {
@@ -77,7 +74,8 @@
         bubbleIndex: 0,
         bubbleArr: [],
         gainArr: [],
-        modal: ''
+        modal: '',
+        timer: null
       }
     },
     components: {
@@ -90,6 +88,9 @@
     },
     created () {
       this._getUserToken()
+    },
+    beforeDestroy () {
+      clearTimeout(this.timer)
     },
     methods: {
       _getUserToken () {
@@ -121,15 +122,14 @@
         })
       },
       _setBubblePosition (bubbleArr) {
-        let [limit, index] = [9, 0]
-        let [x1, y1, w] = [0, 40, 70]
-        let [posArr, x, y, randX, randY] = [[], 0, 0, 34, 20]
+        const [limit, index, x1, y1, w, randX, randY] = [9, 0, 0, 40, 70, 34, 20]
+        let [x, y, posArr] = [0, 0, []]
         let num = bubbleArr.length > limit ? limit : bubbleArr.length
         let x2 = document.documentElement.clientWidth - 80, y2 = document.documentElement.clientHeight * 0.45
         let xNum = Math.floor((x2 - x1) / w), yNum = Math.floor((y2 - y1) / w)
         let ww = (x2 - x1) / xNum, hh = (y2 - y1) / yNum
-        for (var j = 0; j < yNum; j++) {
-          for (var i = 0; i < xNum; i++) {
+        for (let j = 0; j < yNum; j++) {
+          for (let i = 0; i < xNum; i++) {
             x = x1 + i * ww + randX * Math.random(0, 1)
             y = y1 + j * hh + randY * Math.random(0, 1)
             x = x < x1 ? x1 : x
@@ -141,7 +141,7 @@
         let len = Math.min((index + 1) * limit, bubbleArr.length)
         let candyArr = bubbleArr.slice(index * limit, len)
         len = Math.min(arr.length, candyArr.length)
-        for (var i = 0; i < len; i++) {
+        for (let i = 0; i < len; i++) {
           candyArr[i].left = arr[i].x
           candyArr[i].top = arr[i].y
           if (Number(candyArr[i].amount)) {
@@ -160,7 +160,7 @@
         let returnArray = new Array()
         for (let i = 0; i < num; i++) {
           if (tempArray.length > 0) {
-            var arrIndex = Math.floor(Math.random() * tempArray.length)
+            let arrIndex = Math.floor(Math.random() * tempArray.length)
             returnArray[i] = tempArray[arrIndex]
             tempArray.splice(arrIndex, 1)
           } else {
@@ -170,16 +170,16 @@
         return returnArray
       },
       _parseTime (str) {
-        let time = new Date(str.replace(/-/g, "/"))
+        let time = new Date(str.replace(/-/g, '/'))
         let now = new Date()
         let gap = parseInt((now - time) * 0.001 / 60, 10)
         let minute_arr = [365 * 24 * 60, 30 * 24 * 60, 7 * 24 * 60, 24 * 60, 60, 0]
-        let str_arr = ["年前", "个月前", "周前", "天前", "小时前", "分钟前"]
-        let strs = ""
+        let str_arr = ['年前', '个月前', '周前', '天前', '小时前', '分钟前']
+        let content = ''
         for (let i = 0; i < str_arr.length; i++) {
           if (gap >= minute_arr[i]) {
-            strs = minute_arr[i] ? (parseInt(gap / minute_arr[i], 10) + str_arr[i]) : Math.max(gap, 1) + "分钟前"
-            return strs
+            content = minute_arr[i] ? (parseInt(gap / minute_arr[i], 10) + str_arr[i]) : Math.max(gap, 1) + '分钟前'
+            return content
           }
         }
       },
@@ -215,7 +215,7 @@
         if(this.userToken) {
           this.gainArr.pop()
         }
-        setTimeout(()=> {
+        this.timer = setTimeout(()=> {
           this.bubbleArr.splice(index, 1)
         }, 300)
       },
@@ -296,5 +296,5 @@
 </script>
 
 <style lang="scss">
-  @import '../../static/digMoney.scss'
+  @import "../../static/digMoney.scss"
 </style>

@@ -23,5 +23,5 @@
 </script>
 
 <style lang="scss">
-  @import '../../static/gainSuccess.scss'
+  @import "../../static/gainSuccess.scss"
 </style>

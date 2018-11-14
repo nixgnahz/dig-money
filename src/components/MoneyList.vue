@@ -16,7 +16,6 @@
 
 <script>
   import getAsset from '@/api/asset'
-
   export default {
     data () {
       return {
@@ -53,5 +52,5 @@
 </script>
 
 <style lang="scss">
-  @import '../../static/dataList.scss'
+  @import "../../static/dataList.scss"
 </style>

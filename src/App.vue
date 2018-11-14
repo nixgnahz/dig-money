@@ -10,44 +10,43 @@
 </template>
 
 <script>
-import DigMoney from './components/DigMoney.vue'
-import GainList from './components/GainList.vue'
-import InviteCode from './components/InviteCode.vue'
-import MoneyList from './components/MoneyList.vue'
-import Sign from './components/sign.vue'
-import TaskList from './components/TaskList.vue'
-
-export default {
-  name: 'App',
-  computed: {
-    DigMoneyFlag () {
-      return this.$store.state.page.DigMoneyFlag
+  import DigMoney from './components/DigMoney.vue'
+  import GainList from './components/GainList.vue'
+  import InviteCode from './components/InviteCode.vue'
+  import MoneyList from './components/MoneyList.vue'
+  import Sign from './components/sign.vue'
+  import TaskList from './components/TaskList.vue'
+  export default {
+    name: 'App',
+    computed: {
+      DigMoneyFlag () {
+        return this.$store.state.page.DigMoneyFlag
+      },
+      GainListFlag () {
+        return this.$store.state.page.GainListFlag
+      },
+      InviteCodeFlag () {
+        return this.$store.state.page.InviteCodeFlag
+      },
+      MoneyListFlag () {
+        return this.$store.state.page.MoneyListFlag
+      },
+      SignFlag () {
+        return this.$store.state.page.SignFlag
+      },
+      TaskListFlag () {
+        return this.$store.state.page.TaskListFlag
+      }
     },
-    GainListFlag () {
-      return this.$store.state.page.GainListFlag
-    },
-    InviteCodeFlag () {
-      return this.$store.state.page.InviteCodeFlag
-    },
-    MoneyListFlag () {
-      return this.$store.state.page.MoneyListFlag
-    },
-    SignFlag () {
-      return this.$store.state.page.SignFlag
-    },
-    TaskListFlag () {
-      return this.$store.state.page.TaskListFlag
+    components: {
+      DigMoney,
+      GainList,
+      InviteCode,
+      MoneyList,
+      Sign,
+      TaskList
     }
-  },
-  components: {
-    DigMoney,
-    GainList,
-    InviteCode,
-    MoneyList,
-    Sign,
-    TaskList
   }
-}
 </script>
 
 <style lang="scss">

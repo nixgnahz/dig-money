@@ -22,11 +22,10 @@
 
 <script>
   import getGainList from '@/api/list'
-
   export default {
     data () {
       return {
-        record_arr: [],
+         record_arr: [],
          page: 1,
          pageSize: 5
       }
@@ -68,6 +67,6 @@
 </script>
 
 <style lang="scss">
-  @import '../../static/dataList.scss';
-  @import '../../static/gainList.scss';
+  @import "../../static/dataList.scss";
+  @import "../../static/gainList.scss";
 </style>

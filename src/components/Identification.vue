@@ -21,5 +21,5 @@
 </script>
 
 <style lang="scss">
-  @import '../../static/inputPage.scss'
+  @import "../../static/inputPage.scss"
 </style>

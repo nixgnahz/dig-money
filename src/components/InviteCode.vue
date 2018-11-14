@@ -17,17 +17,16 @@
 
 <script>
   import Toast from './baseComponent/Toast.vue'
-
   import Clipboard from 'clipboard'
   import getInviteCode from '@/api/invite'
-
   export default {
     data () {
       return {
         copyBtn: null,
         toast: '',
         inviteCode: 0,
-        inviteRule: "总共可邀请五位好友加入天宫，每邀请1位好友注册并实名后，您将获得5个原力的额外奖励"
+        inviteRule: "总共可邀请五位好友加入天宫，每邀请1位好友注册并实名后，您将获得5个原力的额外奖励",
+        timer: null
       }
     },
     components: {
@@ -41,9 +40,12 @@
           this.inviteCode = res.data.invite_code
           this.inviteRule = res.data.rules
         } else{
-          this._showToast("邀请码获取失败")
+          this._showToast('邀请码获取失败')
         }
       }).catch(()=> {})
+    },
+    beforeDestroy () {
+      clearTimeout(this.timer)
     },
     mounted() {
       this.clipboard = new Clipboard(this.$refs.copy)
@@ -51,15 +53,15 @@
     methods: {
       copyInviteCode () {
         if(!this.inviteCode) {
-          this._showToast("邀请码获取失败")
+          this._showToast('邀请码获取失败')
           return
         }
         let clipboard = this.clipboard
         clipboard.on('success', (e)=>{
-          this._showToast("复制成功")
+          this._showToast('复制成功')
         })
         clipboard.on('error', (e)=>{
-          this._showToast("复制失败")
+          this._showToast('复制失败')
         })
       },
       showDig () {
@@ -73,7 +75,7 @@
       },
       _showToast (value) {
         this.toast = value
-        setTimeout(()=> {
+        this.timer = setTimeout(()=> {
           this.toast = ''
         }, 1500)
       }
@@ -82,5 +84,5 @@
 </script>
 
 <style lang="scss">
-  @import '../../static/inviteCode.scss'
+  @import "../../static/inviteCode.scss"
 </style>

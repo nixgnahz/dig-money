@@ -31,11 +31,9 @@
   import Identification from './Identification.vue'
   import Toast from './baseComponent/Toast.vue'
   import Modal from './baseComponent/Modal.vue'
-
   import {sendVerifyCode, login} from '@/api/sign'
   import {signIn} from '@/api/sign'
   import {setCookie} from '../../static/common'
-
   export default {
     data () {
       return {
@@ -44,12 +42,18 @@
         modal: '',
         telephone: '',
         verifyCode: '',
-        inviteCode: ''
+        inviteCode: '',
+        timer: null,
+        timer_: null
       }
     },
     components: {
       Toast,
       Modal
+    },
+    beforeDestroy () {
+      clearInterval(this.timer)
+      clearTimeout(this.timer_)
     },
     methods: {
       getVerifyCode () {
@@ -146,10 +150,10 @@
       _countdown () {
         let time = 60
         this.codeText = time + ' 秒后重新获取'
-        let timer = setInterval(()=> {
+        this.timer = setInterval(()=> {
           if(time <= 1) {
             this.codeText = '获取验证码'
-            clearInterval(timer)
+            clearInterval(this.timer)
             return
           }
           time--
@@ -158,7 +162,7 @@
       },
       _showToast (value) {
         this.toast = value
-        setTimeout(()=> {
+        this.timer_ = setTimeout(()=> {
           this.toast = ''
         }, 1500)
       },
@@ -170,5 +174,5 @@
 </script>
 
 <style lang="scss">
-  @import '../../static/inputPage.scss'
+  @import "../../static/inputPage.scss"
 </style>
