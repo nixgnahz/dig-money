@@ -7,7 +7,7 @@
         <div style="color: #7d67df">正在生长中</div>
       </div>
       <div v-if="bubbleArr.length && showBubble">
-        <div :class="['bubble_ctn', item.class ? item.class : '']" v-for="(item, index) in bubbleArr" :key="item.key" :style="{top: item.top + 'px', left: item.left + 'px'}" @click="gainBubble(index)">
+        <div class="bubble_ctn" :class="[item.class ? item.class : '']" v-for="(item, index) in bubbleArr" :key="item.key" :style="{top: `${item.top}px`, left: `${item.left}px`}" @click="gainBubble(index)">
           <div class="ani_ctn">
             <div class="ani">
               <img class="bubble" src="http://wx.11babay.cn/uploads/k/kvqese1523955909/0/8/f/4/5ad816e799534.png" />

@@ -149,7 +149,7 @@
       },
       _countdown () {
         let time = 60
-        this.codeText = time + ' 秒后重新获取'
+        this.codeText = `${time} 秒后重新获取`
         this.timer = setInterval(()=> {
           if(time <= 1) {
             this.codeText = '获取验证码'
@@ -157,7 +157,7 @@
             return
           }
           time--
-          this.codeText = time + ' 秒后重新获取'
+          this.codeText = `${time} 秒后重新获取`
         }, 1000)
       },
       _showToast (value) {

@@ -1,7 +1,7 @@
 <template>
   <div class="dataList wrap">
     <div class="point_list">
-      <div :class="['point_li', item.selected ? 'selected' : '']" v-for="(item, index) in assetArr" @click="showDesc(index)">
+      <div class="point_li" :class="{selected: item.selected}" v-for="(item, index) in assetArr" @click="showDesc(index)">
         <div class="point_icon bg"></div>
         <div>{{item.name}}</div>
         <div class="point">{{item.amount}}</div>
