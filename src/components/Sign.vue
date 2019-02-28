@@ -52,8 +52,12 @@
       Modal
     },
     beforeDestroy () {
-      clearInterval(this.timer)
-      clearTimeout(this.timer_)
+      if (this.timer) {
+        clearInterval(this.timer)
+      }
+      if (this.timer_) {
+        clearTimeout(this.timer_)
+      }
     },
     methods: {
       getVerifyCode () {
@@ -94,26 +98,23 @@
           }
         })
       },
-      _signIn (userToken) {
-        signIn({
-          'token': userToken
-        }).then((res)=> {
-          if(res.code === 200) {
-            this._showModal({
-              title: '签到任务完成',
-              desc: '您获得了2个原力',
-              showCancel: false
-            })
-          } else{
-            this.$store.commit({
-              type: 'changePageFlag',
-              value: {
-                last: 'SignFlag',
-                now: 'DigMoneyFlag'
-              }
-            })
-          }
-        }).catch(()=> {})
+      async _signIn (userToken) {
+        const res = await signIn({ 'token': userToken })
+        if(res.code === 200) {
+          this._showModal({
+            title: '签到任务完成',
+            desc: '您获得了2个原力',
+            showCancel: false
+          })
+        } else{
+          this.$store.commit({
+            type: 'changePageFlag',
+            value: {
+              last: 'SignFlag',
+              now: 'DigMoneyFlag'
+            }
+          })
+        }
       },
       _setUserToken (userToken) {
         setCookie('userTokenCookie', userToken, 365)

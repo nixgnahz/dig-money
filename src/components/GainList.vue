@@ -48,19 +48,18 @@
         this.page++
         this._getList()
       },
-      _getList () {
-        getGainList({
+      async _getList () {
+        const res = await getGainList({
           'token': this.$store.state.userToken,
           'page': this.page,
           'pageSize': this.pageSize
-        }).then((res)=> {
-          if(res.code === 200) {
-            this.record_arr = this.record_arr.concat(res.data)
-          }
-          if(res.data.length < this.pageSize) {
-            this.page = -1
-          }
-        }).catch(()=> {})
+        })
+        if(res.code === 200) {
+          this.record_arr = this.record_arr.concat(res.data)
+        }
+        if(res.data.length < this.pageSize) {
+          this.page = -1
+        }
       }
     }
   }

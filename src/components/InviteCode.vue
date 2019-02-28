@@ -32,20 +32,19 @@
     components: {
       Toast
     },
-    created () {
-      getInviteCode({
-        'token': this.$store.state.userToken
-      }).then((res)=> {
-        if(res.code === 200) {
-          this.inviteCode = res.data.invite_code
-          this.inviteRule = res.data.rules
-        } else{
-          this._showToast('邀请码获取失败')
-        }
-      }).catch(()=> {})
+    async created () {
+      const res = await getInviteCode({ 'token': this.$store.state.userToken })
+      if(res.code === 200) {
+        this.inviteCode = res.data.invite_code
+        this.inviteRule = res.data.rules
+      } else{
+        this._showToast('邀请码获取失败')
+      }
     },
     beforeDestroy () {
-      clearTimeout(this.timer)
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
     },
     mounted() {
       this.clipboard = new Clipboard(this.$refs.copy)

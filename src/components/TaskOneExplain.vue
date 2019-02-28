@@ -52,32 +52,30 @@
       this._getExplain()
     },
     beforeDestroy () {
-      clearTimeout(this.timer)
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
     },
     methods: {
-      _getExplain () {
-        getTaskOneExplain({
-          'token': this.$store.state.userToken
-        }).then((res)=> {
-          this.subscribe = res.data
-        }).catch(()=> {})
+      async _getExplain () {
+        const res = await getTaskOneExplain({ 'token': this.$store.state.userToken })
+        this.subscribe = res.data
       },
-      checkCode () {
+      async checkCode () {
         if(!this.code) return
-        checkCode({
+        const res = await checkCode({
           'token': this.$store.state.userToken,
           'password': this.code
-        }).then((res)=> {
-          if(res.code === 200) {
-            this._showModal({
-              title: '任务完成',
-              desc: '您获得了2个原力',
-              showCancel: false
-            })
-          } else{
-            this._showToast(res.error)
-          }
-        }).catch(()=> {})
+        })
+        if (res.code === 200) {
+          this._showModal({
+            title: '任务完成',
+            desc: '您获得了2个原力',
+            showCancel: false
+          })
+        } else {
+          this._showToast(res.error)
+        }
       },
       hide () {
         this.$emit('hideExplain')

@@ -26,14 +26,11 @@
       this._getAssetData()
     },
     methods: {
-      _getAssetData () {
-        getAsset({
-          'token': this.$store.state.userToken
-        }).then((res)=> {
-          if(res.code === 200) {
-            this.assetArr = res.data
-          }
-        }).catch(()=> {})
+      async _getAssetData () {
+        const res = await getAsset({ 'token': this.$store.state.userToken })
+        if(res.code === 200) {
+          this.assetArr = res.data
+        }
       },
       showDig () {
         this.$store.commit({

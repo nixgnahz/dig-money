@@ -190,20 +190,19 @@
           showCancel: true
         }
       },
-      gainBubble (index) {
+      async gainBubble (index) {
         if(this.bubbleArr[index].class === 'gone') return
         if(this.userToken) {
           if(!this.bubbleArr[index].key) return
           this.bubbleArr[index] = Object.assign({}, this.bubbleArr[index], {class: 'gone', time: '刚刚'})
           this._playAudio()
-          saveBubble({
+          const res = await saveBubble({
             'token': this.userToken,
             'candy_key': this.bubbleArr[index].key
-          }).then((res)=> {
-            if(res.code === 200) {
-              this._hideBubble(index)
-            }
-          }).catch(()=> {})
+          })
+          if(res.code === 200) {
+            this._hideBubble(index)
+          }
         } else{
           this.bubbleArr[index] = Object.assign({}, this.bubbleArr[index], {class: 'gone'})
           this._playAudio()

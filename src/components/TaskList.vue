@@ -49,32 +49,26 @@
       this._getTask()
     },
     methods: {
-      _getTask () {
-        getTask({
-          'token': this.$store.state.userToken
-        }).then((res)=> {
-          this.power_arr = res.data
-        }).catch(()=> {})
+      async _getTask () {
+        const res = await getTask({ 'token': this.$store.state.userToken })
+        this.power_arr = res.data
       },
-      _signIn () {
-        signIn({
-          'token': this.$store.state.userToken
-        }).then((res)=> {
-          if(res.code === 200) {
-            this.$set(this.power_arr['user_signed'], 'status', 1)
-            this._showModal({
-              title: '任务完成',
-              desc: '您获得了2个原力',
-              showCancel: false
-            })
-          } else{
-            this._showModal({
-              title: '任务失败',
-              desc: res.error,
-              showCancel: false
-            })
-          }
-        }).catch(()=> {})
+      async _signIn () {
+        const res = await signIn({ 'token': this.$store.state.userToken })
+        if (res.code === 200) {
+          this.$set(this.power_arr['user_signed'], 'status', 1)
+          this._showModal({
+            title: '任务完成',
+            desc: '您获得了2个原力',
+            showCancel: false
+          })
+        } else {
+          this._showModal({
+            title: '任务失败',
+            desc: res.error,
+            showCancel: false
+          })
+        }
       },
       showDig () {
         this.$store.commit({
